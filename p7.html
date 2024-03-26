@@ -1,0 +1,73 @@
+
+<html ng-app="crudApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>crud Application</title>
+</head>
+<body ng-controller="crudController">
+    <h1>user management</h1>
+    <form ng-submit="adduser()">
+        name:
+        <input type="text" ng-model="name">
+        <br><br>
+        age:
+        <input type="number" ng-model="age">
+        <button >add student</button>
+        <br><br>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{ user.name }}</td>
+                <td>{{ user.age }}</td>
+                <td><button ng-click="edituser(user)">edit</button>
+                <button ng-click="deleteuser(user)">delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+<script>
+    angular.module('crudApp',[])
+    .controller('crudController',function($scope)
+    {
+        $scope.users=[{name:'ram',age:25},{name:'sita',age:20}];
+        $scope.adduser=function()
+        {
+            $scope.users.push({name:$scope.name,age:$scope.age});
+            $scope.name='';
+            $scope.age='';
+
+
+        };
+        $scope.edituser=function(user){
+            var index=$scope.users.indexOf(user);
+
+            var updatedname=prompt('enter the updated name: ',user.name);
+            var updatedage=prompt('enter the updated age: ',user.age);
+
+            if(updatedname!==null && updatedage!==null)
+            {
+                var updateduser=$scope.users.push({name:$scope.updatedname,age:$scope.updatedage});
+                $scope.users.splice(index,1,updateduser);
+            }
+        };
+        $scope.deleteuser=function(user){
+            var index=$scope.users.indexOf(user);
+            $scope.users.splice(index,1);
+
+        };
+
+    });
+
+
+</script>
+    
+</body>
+</html>

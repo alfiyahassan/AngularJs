@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="loginapp">
+
+<head>
+
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <style >
+        form{
+            border: 1px solid black;
+    width: 232px;
+    padding: 69px;
+    margin: 39px;
+    background-color: aliceblue;
+        }
+
+    </style>
+</head>
+
+<body ng-controller="logincontroller">
+    <form ng-submit="login()">
+        username:
+        <input type="text" ng-model="username" required>
+        <br><br>
+        password:
+        <input type="password" ng-model="pass" required>
+        <br><br>
+        <button type="submit">login</button>
+
+    </form>
+    <script>
+        angular.module('loginapp', [])
+            .controller('logincontroller', function ($scope) {
+                $scope.login = function () {
+                    if ($scope.username == 'ram' && $scope.pass == 'ram')
+                        alert('login successfull !');
+                    else
+                        alert('invalid username or password');
+                };
+
+            });
+    </script>
+
+</body>
+
+</html>

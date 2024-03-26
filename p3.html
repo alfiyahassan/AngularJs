@@ -1,0 +1,51 @@
+<html ng-app="calculatorapp">
+    <head>
+        <title>
+          calculator app
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    </head>
+    <body ng-controller="calcntrl">
+        enter first number:
+        <input type="number" ng-model="num1">
+        select operator:
+        <select ng-model="operator">
+            <option value="+">add</option>
+            <option value="-">substract</option>
+            <option value="*">multiply</option>
+            <option value="/">divide</option>
+        </select>
+        enter second number:
+        <input type="number" ng-model="num2">
+        
+        <button ng-click="calculate()">calculate</button>
+        <p>result: {{ result }}</p>
+
+     <script>
+        var app=angular.module('calculatorapp',[])
+        app.controller('calcntrl',function($scope){
+            $scope.calculate=function()
+            {
+
+                switch($scope.operator)
+                {
+                    case '+':$scope.result=$scope.num1+$scope.num2;
+                    break;
+                    case '-':$scope.result=$scope.num1-$scope.num2;
+                    break;
+                    case '*':$scope.result=$scope.num1*$scope.num2;
+                    break;
+                    case '/':
+                        if($scope.num2==0)
+                            $scope.result="undefined";
+                        else
+                            $scope.result=$scope.num1/$scope.num2;
+                    break;
+                  
+                }
+            };
+
+        });
+        </script>
+    </body>
+</html>

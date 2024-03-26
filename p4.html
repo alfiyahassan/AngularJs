@@ -1,0 +1,45 @@
+<html ng-app="factapp">
+    <title>
+        fact square app
+    </title>
+    <head>
+        <script src="https:/ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+    </head>
+    <body ng-controller="factcntrl">
+        enter the number: 
+        <input type="number" ng-model="num">
+        <button ng-click="calcfact()">factorial</button>
+        <button ng-click="calcsquare()">square</button>
+        <h3>factorial: {{ fact }}</h3>
+        <h3>square: {{ square }}</h3>
+
+        <script>
+            angular.module('factapp',[])
+            .controller('factcntrl',function($scope){
+
+                $scope.calcfact=function()
+                {
+                    if($scope.num>=0)
+                    $scope.fact=factorial($scope.num);
+                else
+                $scope.fact="undefined";
+                };
+                $scope.calcsquare=function(){
+                    $scope.square=$scope.num*$scope.num;
+
+                };
+                function factorial(n)
+                {
+                    if(n==0||n==1)
+                    return 1;
+                else
+                return n* factorial(n-1);
+
+                }
+
+            });
+        </script>
+        
+    </body>
+</html>

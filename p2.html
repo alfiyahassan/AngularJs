@@ -1,0 +1,39 @@
+<html ng-app="koiapp">
+    <head>
+        <title>it is an app</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    </head>
+    <body>
+        <div ng-controller="mycntrl">
+            <!--create a table for the shopping items-->
+            <table>
+                <tr ng-repeat="item in shoppingitems">
+                <td> {{ item }} </td>
+                <td><button ng-click="removeitems($index)">remove item</button></td>
+            </tr>
+
+            </table>
+            <input type="text" ng-model="newitem" placeholder="">
+            <button ng-click="additems()">add</button>
+
+        </div>
+        <script>
+            angular.module('koiapp',[])
+            .controller('mycntrl',function($scope){
+                //
+                //
+                $scope.shoppingitems=['apple','banana','mango'];
+                $scope.additems=function(){
+                    if($scope.newitem)
+                    {
+                    $scope.shoppingitems.push($scope.newitem);
+                    $scope.newitem=" ";
+                    }
+                };
+                $scope.removeitems=function(index){
+                    $scope.shoppingitems.splice(index,1);
+                };
+            });
+        </script>
+    </body>
+</html>

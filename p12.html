@@ -1,0 +1,21 @@
+
+<html ng-app="dateapp">
+<head>
+  
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+</head>
+<body ng-controller="datecntrl">
+    <p>default: {{ currentdate | date }}</p>
+    <p>custom date: {{ currentdate | date:'yyyy-MM-dd' }}</p>
+    <p>short date : {{ currentdate | date:'shortDate' }}</p>
+    <p>Full date: {{ currentdate | date:'fullDate' }}</p>
+    
+    <Script>
+        angular.module('dateapp',[])
+        .controller('datecntrl',function($scope){
+            $scope.currentdate=new Date();
+        });
+    </Script>
+</body>
+</html>

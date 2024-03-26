@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="upperapp">
+<head>
+    
+    <title>Document</title>
+    <script src="https:/ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+
+</head>
+<body ng-controller="uppercntrl">
+    <h3>original names</h3>
+    <ul>
+        <li ng-repeat="name in names">{{ name }}</li>
+    </ul>
+    <h3>another names</h3>
+    <ul>
+        <li ng-repeat="name in names">{{ name | uppercase }}</li>
+    </ul>
+    
+    <script>
+        angular.module('upperapp',[])
+        .controller('uppercntrl',function($scope){
+            $scope.names=['ram','sita','raju'];
+        })
+    </script>
+</body>
+</html>
